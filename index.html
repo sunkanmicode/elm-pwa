@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elm PWA Practice</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="favicon.ico" />
+
+</head>
+
+<body>
+    <div id="elm-app"></div>
+    <p>This text should appear.</p>
+    <script src="main.js"></script>
+    <script>
+        var app = Elm.Main.init({
+                node: document.getElementById('elm-app')
+            });
+            console.log('Elm app initialized');
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+                console.log('Service worker registered.', reg);
+            });
+        }
+    </script>
+</body>
+
+</html>
